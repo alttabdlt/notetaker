@@ -1,25 +1,34 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+  "manifest_version": 3,
+  "name": "Web Snipper",
+  "version": "1.0",
+  "description": "Highlight, snip, and save text from webpages to various document types.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "images/logo1.png",
+      "48": "images/logo2.png"
+    }
+  },
+  "options_page": "index.html",
+  "icons": {
+    "16": "images/logo1.png",
+    "48": "images/logo2.png"
+  }
 }
